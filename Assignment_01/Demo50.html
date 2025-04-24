@@ -1,0 +1,23 @@
+<script>
+    let num1 = parseInt(prompt("Enter first no :"));
+    let num2 = parseInt(prompt("Enter second no :"));
+
+    document.write("palindrome numbers between ", num1, " and ", num2, " = ");
+    for (let i = num1; i <= num2; i++) {
+
+        let x=i;
+        let temp = i;
+        let rev = 0;
+        while (temp != 0) {
+
+            rev = (rev * 10) + (temp % 10);
+            temp = parseInt(temp / 10);
+
+        }
+       
+        if (rev == x)
+            document.write(x," &nbsp;&nbsp;");
+        
+    }
+
+</script>

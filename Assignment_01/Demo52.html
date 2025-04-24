@@ -1,0 +1,29 @@
+<script>
+    let num1 = parseInt(prompt("Enter first no :"));
+    let num2 = parseInt(prompt("Enter second no :"));
+
+    document.write("Armstrong numbers between ", num1, " and ", num2, " = ");
+    for (let i = num1; i <= num2; i++) {
+
+        let x=i;
+        let temp = x;
+        let temp2 = x;
+        let count = 0;
+        while (temp != 0) {
+            count++;
+            temp = parseInt(temp / 10);
+
+        }
+        let sum = 0;
+        while (temp2 != 0) {
+
+            let dig = temp2 % 10;
+            sum += dig ** count;
+            temp2 = parseInt(temp2 / 10);
+        }
+
+        if (sum == x)
+            document.write(x, "  &nbsp;&nbsp;");
+    }
+
+</script>

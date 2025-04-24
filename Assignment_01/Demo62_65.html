@@ -1,0 +1,19 @@
+<script>
+
+    for (let i = 1; i <= 5 ; i ++) {
+
+        let value=1;
+        for (let k = 5 ; k > i; k--) {
+            document.write("&nbsp;&nbsp");
+        }
+
+        for (let j = 1; j <= i; j++) {
+
+                document.write(" ",value)
+                value = value * (i - j) / (j );
+
+        }
+
+        document.write("<br>")
+    }
+</script>

@@ -1,0 +1,34 @@
+<script>
+    let x = parseInt(prompt("Enter binary no :"));
+    
+    let temp=x;
+    let count = 0;
+    let arr=[];
+    while (temp != 0) {
+        count++;
+        temp = parseInt(temp / 10);
+
+    }
+    document.write(x)
+    for(let i=count-1;i>=0;i--){
+        if(i==0){
+            arr[count-1]=x%10;
+            x = parseInt(x / 10);
+        }
+        else if(i==(count-1)){
+            arr[0]=x%10;
+            x = parseInt(x / 10);
+        }
+        else{
+            arr[i]=x%10;
+            x = parseInt(x / 10);
+        }
+    }
+
+    let newx=0;
+    for(let i=0;i<arr.length;i++){
+        newx=(newx*10)+arr[i];
+    }
+    
+    document.write("<br>",newx)
+</script>

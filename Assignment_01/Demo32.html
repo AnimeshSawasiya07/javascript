@@ -1,0 +1,16 @@
+<script>
+    let x = parseInt(prompt("Enter no of value to add in series :"));
+
+    let upperCharCode = 65;
+    let lowerCharCode = 97;
+    for (let i = 0; i < x; i++) {
+
+        if(i%2==0)
+        document.write(String.fromCharCode(upperCharCode)," &nbsp;&nbsp;");
+        else
+        document.write(String.fromCharCode(lowerCharCode)," &nbsp;&nbsp;");
+
+        upperCharCode++;
+        lowerCharCode++;
+    }
+</script>

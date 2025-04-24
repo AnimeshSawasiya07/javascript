@@ -1,0 +1,17 @@
+<script>
+    let x = parseInt(prompt("Enter no to check palindrome or not :"));
+
+    let temp=x;
+    let rev = 0;
+    while (temp != 0) {
+
+        rev = (rev * 10) + (temp % 10);
+        temp = parseInt(temp / 10);
+
+    }
+    document.write(rev," == ",x," ");
+    if (rev == x)
+        document.write("number is palindrome");
+    else
+        document.write("number is not palindrome");
+</script>

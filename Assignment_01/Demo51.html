@@ -1,0 +1,19 @@
+<script>
+    let num1 = parseInt(prompt("Enter first no :"));
+    let num2 = parseInt(prompt("Enter second no :"));
+
+    document.write("reverse numbers between ", num1, " and ", num2, " = ");
+    for (let i = num1; i <= num2; i++) {
+
+        let x = i;
+        let rev = 0;
+        while (x != 0) {
+
+            rev = (rev * 10) + (x % 10);
+            x = parseInt(x / 10);
+
+        }
+        document.write(rev," &nbsp;&nbsp;");
+    }
+
+</script>

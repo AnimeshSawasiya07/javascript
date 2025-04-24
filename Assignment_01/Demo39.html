@@ -1,0 +1,20 @@
+<script>
+    let x = parseInt(prompt("Enter no to check Strong or not :"));
+
+    let temp2 = x;
+    let sum=0;
+    while (temp2 != 0) {
+        let fact = 1;
+        let dig = temp2%10;
+        for (let j = 2; j <= dig; j++) {
+            fact*=j;
+        }
+        sum+=fact;
+        temp2 = parseInt( temp2/10);
+    }
+
+    if (sum == x)
+        document.write("number is Strong number");
+    else
+        document.write("number is not strong number");
+</script>

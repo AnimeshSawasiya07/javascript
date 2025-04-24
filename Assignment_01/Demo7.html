@@ -1,0 +1,20 @@
+<script>
+    let n = prompt("Enter a number : ")
+
+    if (n > 1) {
+        let flag = true;
+        for (let i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                flag = false;
+            }
+
+        }
+        if (flag)
+            document.write("Prime number")
+        else
+            document.write("Not a prime number!");
+    }
+    else {
+        document.write("Not a prime number!");
+    }
+</script>

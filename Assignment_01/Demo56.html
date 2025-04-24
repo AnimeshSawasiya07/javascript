@@ -1,0 +1,16 @@
+<script>
+    let num1 = parseInt(prompt("Enter first number : "));
+    let num2 = parseInt(prompt("Enter second number : "));
+
+    document.write("factorials of numbers between ",num1," and ",num2," : <br><br>")
+    for (let i = num1; i<=num2; i++) {
+        let n = i;
+        let fact = 1;
+        document.write("Factorial of ",n," = ");
+        for (let j = 2; j<=n; j++) {
+            fact*=j;
+        }
+        document.write(fact,"<br>");
+        
+    }
+</script>

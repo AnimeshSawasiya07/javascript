@@ -1,0 +1,29 @@
+<script>
+    let x = parseInt(prompt("Enter binary no :"));
+    
+    let first=0,last=0;
+    let temp = x;
+    let count = 0;
+    while (temp != 0) {
+        count++;
+        temp = parseInt(temp / 10);
+
+    }
+    document.write(x)
+    for(let i=count-1;i>=0;i--){
+        if(i==0){
+            last = x%10;
+            x = parseInt(x / 10);
+        }
+        else if(i==(count-1)){
+            first = x%10;
+            x = parseInt(x / 10);
+        }
+        else{
+            x = parseInt(x / 10);
+        }
+    }
+
+    let sum = first+last;
+    document.write("<br>sum : ",sum);
+</script>

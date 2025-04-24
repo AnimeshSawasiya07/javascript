@@ -1,0 +1,23 @@
+<script>
+    let x = parseInt(prompt("Enter first no :"));
+    let y = parseInt(prompt("Enter second no :"));
+
+    let hcf = 1;
+
+    if (x < y) {
+        for (let i = 2; i <= x; i++) {
+            if (x % i == 0 && y % i == 0)
+                hcf = i;
+        }
+    }
+    else {
+        for (let i = 2; i <= y; i++) {
+            if (x % i == 0 && y % i == 0)
+                hcf = i;
+        }
+    }
+
+    let lcm = Math.abs((x*y))/hcf;
+    document.write("LCM of ",x," and ",y," : ",lcm);
+
+</script>

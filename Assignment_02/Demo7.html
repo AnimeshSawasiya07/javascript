@@ -1,0 +1,48 @@
+<!-- 7. Count the occurrences of distinct elements in the given 2D array. The given input is an array, the elements of which are arrays of strings. The result is an object whose property names are the values from the arrays and their value is the number of their occurrences.
+
+const input = [
+  ["a", "b", "c"],
+  ["c", "d", "f"],
+  ["d", "f", "g"],
+];
+output:   {
+    a: 1,
+    b: 1,
+    c: 2,
+    d: 2,
+    f: 2,
+    g: 1,
+  }
+ -->
+
+<script>
+    const input = [
+        ["a", "b", "c"],
+        ["c", "d", "f"],
+        ["d", "f", "g"],
+    ];
+
+    
+    // let output = {};
+
+    // for (const index of input) {
+    //     for (const ele of index) {
+    //         // if (output[ele])         ----------
+    //         //     output[ele]++;                 \       // long way
+    //         // else                               |
+    //         //     output[ele] = 1;     ----------
+
+    //         output[ele]=(output[ele] || 0) +1;                 //short way
+    //     }
+    // }
+
+    // console.log(output);
+
+    const output2=input.flat().reduce((acc,value)=>{
+        acc[value] = (acc[value]||0)+1;
+        return acc;
+    },{});
+
+    console.log(output2);
+    
+</script>

@@ -1,0 +1,20 @@
+<script>
+    let x = parseInt(prompt("Enter no to check palindrome or not :"));
+
+    let countEven = 0;
+    let countOdd = 0;
+
+    document.write("Number : ",x);
+    while (x != 0) {
+        let dig = x % 10;
+
+        if (dig % 2 == 0)
+            countEven++;
+        else
+            countOdd++;
+
+        x = parseInt(x / 10);
+    }    
+        document.write("<br>Even digits : ",countEven);
+        document.write("<br>Odd digits : ",countOdd);
+</script>

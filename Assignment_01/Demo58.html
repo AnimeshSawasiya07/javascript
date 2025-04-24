@@ -1,0 +1,14 @@
+<script>
+    let num = parseInt(prompt("Enter first number : "));
+    
+    let binary="";
+    let temp = 0;
+    document.write("number : ",num," &nbsp;&nbsp; Binary :")
+    while(num>0){
+        temp=(num%2);
+
+        binary= temp.toString()+binary;
+        num = parseInt(num/2);
+    }
+    document.write(binary);
+</script>

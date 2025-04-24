@@ -1,0 +1,14 @@
+<script>
+    let n = prompt("Enter a number : ");
+
+    let a = 0;
+    let b = 1;
+    document.write("Fibonacci Series : ",a," , ",b," , ");
+    for(let i=0 ; i<n;i++){
+        let c = a+b;
+        document.write(c," , ");
+        a=b;
+        b=c;
+    }
+
+</script>

@@ -1,0 +1,33 @@
+<script>
+    for (let i = 1; i <= 7; i += 2) {
+
+        for (let k = 7; k >= i; k -= 2) {
+            document.write("&nbsp;&nbsp;");
+        }
+
+        for (let j = 1; j <= i; j++) {
+            if (j == 1 || i == j)
+                document.write("* ");
+            else
+                document.write("_ ");
+
+        }
+
+        document.write("<br>");
+    }
+    for (let i = 5; i >= 1; i -= 2) {
+        for (let k = 6; k >= i; k--) {
+            document.write("&nbsp; ");
+        }
+        for (let j = 1; j <= i; j++) {
+
+            if (j == 1 || i == j)
+                document.write("*");
+            else
+                document.write("_&nbsp ")
+
+        }
+
+        document.write("<br>");
+    }
+</script>

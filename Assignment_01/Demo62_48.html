@@ -1,0 +1,19 @@
+<script>
+
+    for (let i = 1; i <= 5; i++) {
+        let n = 65;
+        for (let k = 5; k > i; k--) {
+            document.write("&nbsp;&nbsp;&nbsp;");
+        }
+
+        for (let j = 1; j <= i; j++) {
+            if (j == 1 || i == j || i == 5)
+                document.write(String.fromCharCode(n), "");
+            else
+                document.write("_ ")
+            n++;
+        }
+
+        document.write("<br>")
+    }
+</script>

@@ -1,0 +1,13 @@
+<script>
+    let n = parseInt(prompt("Enter no of value to add in series :"));
+    let a = 1;
+    let b = 2;
+    let c;
+    document.write(a,"   ",b,"   ");
+    for(let i=1 ; i<=(n+6);i++){
+        c=a*b;
+        document.write(c,"   ");
+        a=b;
+        b=c;
+    }
+</script>

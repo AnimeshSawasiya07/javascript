@@ -1,0 +1,20 @@
+<script>
+
+    for (let i = 1; i <= 5 * 2; i += 2) {
+
+        for (let k = 5 * 2; k > i; k--) {
+            document.write("&nbsp;");
+        }
+
+        for (let j = 1; j <= i; j++) {
+
+            if (j == 1 || i == j || i == 9)
+                document.write( "1");
+            else
+                document.write("*")
+
+        }
+
+        document.write("<br>")
+    }
+</script>

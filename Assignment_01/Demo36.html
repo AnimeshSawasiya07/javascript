@@ -1,0 +1,13 @@
+<script>
+    let x = parseInt(prompt("Enter no to find reverse :"));
+    
+    let rev = 0 ;
+    document.write("reverse of ",x," : ");
+    while (x != 0) {
+       
+        rev = (rev*10)+(x%10);
+        x = parseInt(x / 10);
+        
+    }
+    document.write(rev);
+</script>

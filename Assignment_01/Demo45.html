@@ -1,0 +1,12 @@
+<script>
+    let x = parseInt(prompt("Enter binary no :"));
+    
+    let sum = 0;
+    document.write("sum of all the digits of ",x," : ")
+    while(x!=0){
+        sum+=x%10;
+        x = parseInt(x/10);
+    }
+    
+    document.write(sum)
+</script>

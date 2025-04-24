@@ -1,0 +1,17 @@
+<script>
+    let x = parseInt(prompt("Enter binary no :"));
+    
+    let decimal = 0;
+    let i = 0;
+    document.write("<br>Binary : ",x);
+    while(x!=0){
+        let dig = x%10;
+        decimal+= (2**i)*dig;
+
+        x = parseInt(x/10);
+        i++;
+    }
+
+    document.write("<br>Decimal : ",decimal);
+
+</script>

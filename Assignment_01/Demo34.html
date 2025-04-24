@@ -1,0 +1,13 @@
+<script>
+    let x = parseInt(prompt("Enter no to check perfect no. or not :"));
+
+    let sum = 0;
+    for (let i = 0; i < x; i++) {
+        if (x % i == 0)
+            sum += i;
+    }
+    if (sum == x)
+        document.write("number is a perfect number");
+    else
+        document.write("number is not a perfect number"); 
+</script>

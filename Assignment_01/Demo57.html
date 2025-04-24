@@ -1,0 +1,18 @@
+<script>
+    let num1 = parseInt(prompt("Enter first number : "));
+    let num2 = parseInt(prompt("Enter second number : "));
+
+    document.write("Prime numbers between ", num1, " and ", num2, " - ")
+    for (let i = num1; i <= num2; i++) {
+        let n = i;
+        let flag = false;
+        for (let j = 2; j <= n / 2; j++) {
+            if (n % j == 0) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag)
+            document.write(n, " &nbsp;&nbsp;");
+    }
+</script>

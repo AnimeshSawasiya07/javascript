@@ -1,0 +1,64 @@
+<!-- 4. Find the difference in age between the oldest and youngest family members, and return their respective ages and the age difference.
+  input:- const input = [
+  {
+    name: "John",
+    age: 13,
+  },
+  {
+    name: "Mark",
+    age: 56,
+  },
+  {
+    name: "Rachel",
+    age: 45,
+  },
+  {
+    name: "Nate",
+    age: 67,
+  },
+  {
+    name: "Jennifer",
+    age: 65,
+  },
+];
+output:- [13, 67, 54];
+ -->
+
+<script>
+  const input = [
+    {
+      name: "John",
+      age: 13,
+    },
+    {
+      name: "Mark",
+      age: 56,
+    },
+    {
+      name: "Rachel",
+      age: 45,
+    },
+    {
+      name: "Nate",
+      age: 67,
+    },
+    {
+      name: "Jennifer",
+      age: 65,
+    }
+  ];
+  
+
+  oldestAge = input[0].age;
+  yougestAge = input[0].age;
+  for (ele of input) {
+    if (ele.age > oldestAge)
+      oldestAge = ele.age;
+
+      if(ele.age<yougestAge)
+      yougestAge=ele.age;
+  }
+
+let output=[yougestAge,oldestAge,(oldestAge-yougestAge)];
+document.write("output : ",output);
+</script>
