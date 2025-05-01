@@ -1,0 +1,80 @@
+<!-- Given an array of positive integers arr[] of size n, the task is to find second largest distinct element in the array.
+
+Note: If the second largest element does not exist, return -1.
+
+Examples:
+
+Input: arr = [12, 35, 1, 10, 34, 1]
+Output: 34
+Explanation: The largest element of the array is 35 and the second largest element is 34.
+
+
+Input: arr = [10, 5, 10]
+Output: 5
+Explanation: The largest element of the array is 10 and the second largest element is 5.
+
+
+Input: arr = [10, 10, 10]
+Output: -1
+Explanation: The largest element of the array is 10 there is no second largest element.
+
+ -->
+
+<script>
+    const arr = [10, 5, 10];
+
+    // let isSwap = false;
+    // for (let i = 0; i < arr.length; i++) {
+    //     for (let j = 0; j < arr.length; j++) {
+    //         if (arr[j] > arr[j + 1]) {
+    //             const temp = arr[j];
+    //             arr[j] = arr[j + 1];
+    //             arr[j + 1] = temp;
+
+    //             isSwap = true;
+    //         }
+    //     }
+    //     if (!isSwap) {
+    //         break;
+    //     }
+    // }
+    // document.write(arr);
+
+    // let isPresent = false
+    // for (let i = arr.length - 2; i >= 0; i--) {
+    //     if (arr[i] != arr[arr.length - 1]) {
+    //         document.write("<br>output : ", arr[i]);
+    //         isPresent = true;
+    //         break;
+    //     }
+    // }
+
+    // if (!isPresent) {
+    //     document.write("<br>output : ", -1);
+    // }
+
+
+
+
+
+
+    //--------optimized solution------------
+
+    let first = -1;  // Will hold the largest element
+    let second = -1; // Will hold the second largest element
+
+    for (let i = 0; i < arr.length; i++) {
+        // If current element is greater than the largest, update both first and second
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        }
+        // If current element is distinct and smaller than the largest but larger than second
+        else if (arr[i] < first && arr[i] > second) {
+            second = arr[i];
+        }
+    }
+
+    // If second is still -1, return -1 (meaning no second largest element found)
+    second === -1 ? document.write("output : ",-1) : document.write("output : ",second);
+</script>

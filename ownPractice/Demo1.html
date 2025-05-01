@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+
+
+
+    <script>
+
+        //Directly
+        // document.getElementById("orange").onclick=()=>{
+        //     document.getElementById("body").style.backgroundColor="orange";
+        // };
+
+        // document.getElementById("green").onclick=()=>{
+        //     document.getElementById("body").style.backgroundColor="green";
+        // };
+
+       
+        
+       
+        
+
+
+        //With the help of closure
+
+        function changeColor(color){
+            return  function(){
+                document.getElementById("body").style.backgroundColor=`${color}`;
+            }
+        }
+
+        document.getElementById("orange").onclick=changeColor("orange")
+
+        document.getElementById("green").onclick=changeColor("green")
+        
+    </script>
+</body>
+</html>
