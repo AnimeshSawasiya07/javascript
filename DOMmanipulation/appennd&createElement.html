@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">My Favourite Movies collection</h1>
+
+
+
+    <script>
+        let list = document.createElement("ul");
+        list.textContent="favourite movies";
+        document.body.appendChild(list);
+
+        let listItem1 = document.createElement("li");
+        listItem1.textContent="KGF";
+        list.appendChild(listItem1);
+
+        let listItem2 = document.createElement("li");
+        listItem2.textContent="Chaava";
+        list.appendChild(listItem2);
+
+        let listItem3 = document.createElement("li");
+        listItem3.textContent="Thor";
+        list.appendChild(listItem3);
+    </script>
+</body>
+</html>

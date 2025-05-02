@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="heading">My Favourite Movies with rating in table</h1>
+
+
+
+    <script>
+        let table = document.createElement("table");
+        table.setAttribute("id", "table1")
+        table.textContent = "table";                     // table.innerText="mnklsnvk";
+        document.body.appendChild(table);
+        // table.style.border="2px solid black";
+        table.border="1"
+        table.cellSpacing="0"
+        table.cellPadding="15"
+        table.style.backgroundColor="lightblue"
+
+        let movies = [["KGF",5.0,"2:30"],["RRR",4.0,"2:40"],["Baahubali",5.0,"2:55"],["Krrish3",4.6,"2:10"],["Ravan",4.1,"2:55"]]
+
+        for (let i = 0; i < 5; i++) {
+            let tr = document.createElement("tr");
+            table.appendChild(tr);
+
+            for (let j = 0; j < 3; j++) {
+                let td = document.createElement("td");
+                td.innerText = movies[i][j];
+                tr.appendChild(td);
+            }
+        }
+    </script>
+</body>
+
+</html>

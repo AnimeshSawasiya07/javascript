@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p1"><b>This is </b> paragraph 1 </p>
+    <p id="p2"><b>This is </b> paragraph 2 </p>
+
+
+
+
+    <script>
+        let p1 = document.getElementById("p1");
+
+        p1.innerHTML = "nkcjnkjnk <b>hvisfv <br> uhisufhsk</b>";                     //isme <b> tag esa ka esa print nhi higa balki content bold krega 
+
+        let p2 = document.getElementById("p2");
+        p2.innerText = "cvnkvnsjkvn <b>hvisfv <br> uhisufhsk</b>"                    //isme <b> tag bhi esa ka esa print ho jaega
+
+
+        //Pro Tip from Developers:
+        //🔸 Use innerText by default
+        //🔸 Use innerHTML only when HTML formatting is required — and with trusted/sanitized data only
+    </script>
+</body>
+
+</html>

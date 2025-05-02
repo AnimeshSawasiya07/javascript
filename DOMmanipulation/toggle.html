@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" onclick="toggleText()">see para</button>
+
+    <p id="p" style="display: none;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium natus sequi
+        libero. Natus laboriosam possimus repudiandae eos sit officia, asperiores ipsum saepe nihil suscipit beatae,
+        magnam minima nobis. Quo ad distinctio magnam magni dicta odio placeat est nobis amet aspernatur in molestias
+        sed deserunt similique, non, optio enim. Totam commodi ad sint impedit pariatur aliquid animi fuga! Fuga quam
+        similique minima repudiandae velit eius dicta incidunt ipsum quo qui blanditiis totam ex reprehenderit deserunt
+        commodi esse iusto alias expedita atque nemo unde dolorum, facere provident ducimus. Rem ad quam molestiae
+        nesciunt, nisi corporis fugit iure possimus porro commodi enim qui.</p>
+
+
+
+
+
+    <script>
+        let buttton = document.getElementById("btn");
+        let text = document.getElementById("p");
+
+        function toggleText() {
+            if (text.style.display == "none")
+                text.style.display = "block"
+            else
+                text.style.display = "none"
+        }
+    </script>
+</body>
+
+</html>
