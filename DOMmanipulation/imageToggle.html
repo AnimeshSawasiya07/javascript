@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div{
+            width:42vw;
+            height: 34vh;
+            display: flex;
+            overflow-x: scroll;
+            gap: 1vw;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="main" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz5qvejz8z.webp" width="300vw" height="400vh" alt="">
+
+   <br><br>
+   <div>
+    <img id="first"  onclick="toggleImage(this)" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz4ekzra9f.webp"  width="300vw" height="200vh" alt="">
+    <img id="second" onclick="toggleImage(this)"  src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz3v2xmucb.webp" width="300vw" height="200vh" alt="">
+    <img id="third"  onclick="toggleImage(this)" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzdn9cwhs5.webp"  width="300vw" height="200vh" alt="">
+    <img id="fourth" onclick="toggleImage(this)"  src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzemfy9nse.webp" width="300vw" height="200vh" alt="">
+   </div>
+</body>
+
+
+<script>
+    function toggleImage(image){
+        let main = document.getElementById("main");
+        let temp = main.src;
+        main.src = image.src;
+        image.src = temp;
+        }
+</script>
+</html>

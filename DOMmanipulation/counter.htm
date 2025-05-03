@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p {
+        height: 55vh;
+        width: 15vw;
+        font-size: 50vh;
+        padding: 0px;
+        margin: 0;
+    }
+
+    button {
+        height: 5vh;
+        width: 5vw;
+
+    }
+</style>
+
+<body>
+    <center>
+        <p id="main">0</p>
+
+        <button id="plus" onclick="changeCount('plus')">+</button>
+        <button id="reset" onclick="changeCount('reset')">reset</button>
+        <button id="minus" onclick="changeCount('minus')">-</button>
+    </center>
+</body>
+
+<script>
+    function changeCount(btnid) {
+        let main = document.getElementById("main");
+        if (btnid === "plus")
+            main.innerHTML = main.innerHTML * 1 + 1;
+        else if (btnid === "minus")
+            main.innerHTML = main.innerHTML < 1 ? 0 : main.innerHTML * 1 - 1;
+        else
+            main.innerHTML = 0;
+
+    }
+</script>
+
+</html>
