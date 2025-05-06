@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+        div>div {
+            height: 8vh;
+            background-color: lightblue;
+            justify-content: center;
+        }
+
+        p {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="accordian" onclick="enableText(this)">Section 1</div>
+        <p id="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quasi, id animi dolore similique ratione est
+            nobis at iste assumenda, molestiae iusto nisi maiores. Recusandae!</p>
+
+        <div id="accordian" onclick="enableText(this)">Section 2</div>
+        <p id="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam perspiciatis ea totam aliquid! Consectetur
+            animi enim rem? Quod doloremque laborum tempore esse eligendi error exercitationem.</p>
+
+        <div id="accordian" onclick="enableText(this)">Section 3</div>
+        <p id="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate omnis similique, laborum explicabo sequi,
+            non repudiandae assumenda tempore iste ducimus earum ullam in obcaecati! Incidunt.</p>
+    </div>
+</body>
+<script>
+    function enableText(accordian){
+        // let accordian = document.getElementById(accordianID)
+       console.log(accordian)
+    }
+</script>
+</html>

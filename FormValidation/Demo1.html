@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        small {
+            color: red;
+        }
+
+        #show {
+            background-color: rgb(157, 149, 149);
+            height: 17px;
+            width: 40px;
+            padding: 2px;
+            margin-left: 165px;
+            margin-top: -21px;
+            border-radius: 2px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" onkeyup="validateUsername()" id="username" placeholder="username"><br>
+        <small id="usernameError"></small><br>
+
+        <input onkeyup="validateEmail()" type="email" id="email" placeholder="Email"><br>
+        <small id="emailError"></small> <br>
+
+        <input onkeyup="validatePassword()" type="password" placeholder="password" id="password">
+        <div onclick="togglePassword()" id="show">show</div><br>
+        <small id="passwordError"></small><br>
+
+        Gender : &nbsp;
+        <input onclick="validateGender()" type="radio" name="gender" id="male">male
+        <input onclick="validateGender()" type="radio" name="gender" id="female">female
+        <br> <small id="genderError"></small><br>
+
+        Sports :
+        <input onclick="validateSports()" type="checkbox" name="favSport" id="cricket">cricket
+        <input onclick="validateSports()" type="checkbox" name="favSport" id="football">football
+        <input onclick="validateSports()" type="checkbox" name="favSport" id="kabaddi">Kabaddi
+        <input onclick="validateSports()" type="checkbox" name="favSport" id="Basketball">Basketball
+        <br> <small id="SportsError"></small><br>
+
+        <br><input onclick=" return validateForm()" type="submit" value="submit">
+    </form>
+</body>
+<script>
+    function togglePassword() {
+        let password = document.querySelector("#password");
+        let show = document.querySelector("#show");
+        if (password.type == "password") {
+            password.type = "text";
+            show.innerHTML = "hide"
+        }
+        else {
+            password.type = "password";
+            show.innerHTML = "show"
+        }
+
+    }
+
+    function validateSports() {
+        let status = true;
+        let cricketStatus = document.querySelector("#cricket").checked;
+        let footballStatus = document.querySelector("#football").checked;
+        let kabaddiStatus = document.querySelector("#kabaddi").checked;
+        let BasketballStatus = document.querySelector("#Basketball").checked;
+        let SportsError = document.querySelector("#SportsError")
+
+        if (!cricketStatus && !footballStatus && !kabaddiStatus && !BasketballStatus) {
+            status = false;
+            SportsError.innerText = "Please select atleast one Sport";
+        }
+        else
+            SportsError.innerText = "";
+        return status;
+    }
+
+    function validateGender() {
+        let status = true;
+        let maleStatus = document.querySelector("#male").checked;
+        let femaleStatus = document.querySelector("#female").checked;
+        let genderError = document.querySelector("#genderError");
+
+        if (!maleStatus && !femaleStatus) {
+            status = false;
+            genderError.innerText = "Please select gender";
+        }
+        else
+            genderError.innerText = "";
+        return status;
+    }
+
+    function validateEmail() {
+        let status = true;
+        let email = document.querySelector("#email").value;
+        let emailError = document.querySelector("#emailError");
+
+        function countAtTheRate() {
+            count = 0;
+            for (let i = 0; i < email.length; i++) {
+                if (email.charAt(i) == "@")
+                    count++;
+            }
+            return count;
+        }
+
+
+        if (email.length == 0) {
+            status = false;
+            emailError.innerText = "email is required";
+        }
+        else if (countAtTheRate() > 1) {
+            status = false;
+            emailError.innerText = "only one @ allowed";
+        }
+        else if (!email.endsWith(".com")) {
+            status = false;
+            emailError.innerText = "email must ends with .com";
+        }
+        else if (!email.includes("@gmail")) {
+            status = false;
+            emailError.innerText = "email must includes gmail after @";
+        }
+        else
+            emailError.innerText = "";
+        return status;
+
+    }
+
+    function validatePassword() {
+        let status = true
+        let password = document.querySelector("#password").value;
+        let passwordError = document.querySelector("#passwordError");
+        if (password.length == 0) {
+            status = false;
+            passwordError.innerText = "password is required";
+        }
+        else if (password.length < 6 || password.length > 10) {
+            status = false;
+            passwordError.innerText = "invalid password";
+        }
+        else
+            passwordError.innerText = "";
+
+        return status;
+    }
+
+    function validateUsername() {
+        let status = true
+        let username = document.querySelector("#username").value;
+        let usernameError = document.querySelector("#usernameError");
+        if (username.length == 0) {
+            usernameError.innerText = "Username is required"
+            status = false;
+        }
+        else
+            usernameError.innerText = "";
+        return status;
+    }
+
+
+    function validateForm() {
+        let usernameStatus = validateUsername();
+        let passwordStatus = validatePassword();
+        let emailStatus = validateEmail();
+        let genderStatus = validateGender();
+        let sportsStatus = validateSports();
+        if (usernameStatus && passwordStatus && emailStatus && genderStatus && sportsStatus)
+            return true;
+        return false;
+    }
+</script>
+
+</html>
