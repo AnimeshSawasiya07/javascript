@@ -49,10 +49,39 @@
         <input onclick="validateSports()" type="checkbox" name="favSport" id="Basketball">Basketball
         <br> <small id="SportsError"></small><br>
 
+        <input onkeyup="validateMobile()" type="text" id="mobile" placeholder="Mobile number"><br>
+        <small id="mobileError"></small>
+
         <br><input onclick=" return validateForm()" type="submit" value="submit">
     </form>
 </body>
 <script>
+    function validateMobile() {
+        let status = true;
+        let mobileNumber = document.querySelector("#mobile").value;
+        let mobileError = document.querySelector("#mobileError");
+
+        if (mobileNumber.length == 0) {
+            status = false;
+            mobileError.innerText = "mobile number is required";
+        }
+        else if(isNaN(mobileNumber)){
+            status = false;
+            mobileError.innerText = "Only digits are allowed";
+        }
+        else if(mobileNumber.startsWith("0")){
+            status = false;
+            mobileError.innerText = "Mobile number must not start with 0";
+        }
+        else if(mobileNumber.length !=10){
+            status = false;
+            mobileError.innerText = "invalid mobile number";
+        }
+        else
+            mobileError.innerText = "";
+        return status;
+    }
+
     function togglePassword() {
         let password = document.querySelector("#password");
         let show = document.querySelector("#show");
@@ -174,7 +203,8 @@
         let emailStatus = validateEmail();
         let genderStatus = validateGender();
         let sportsStatus = validateSports();
-        if (usernameStatus && passwordStatus && emailStatus && genderStatus && sportsStatus)
+        let mobileStatus = validateMobile();
+        if (usernameStatus && passwordStatus && emailStatus && genderStatus && sportsStatus && mobileStatus)
             return true;
         return false;
     }
