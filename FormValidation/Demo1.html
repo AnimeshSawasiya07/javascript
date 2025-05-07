@@ -34,7 +34,7 @@
         <small id="emailError"></small> <br>
 
         <input onkeyup="validatePassword()" type="password" placeholder="password" id="password">
-        <div onclick="togglePassword()" id="show">show</div><br>
+        <div onclick="togglePassword()" id="show">show</div>
         <small id="passwordError"></small><br>
 
         Gender : &nbsp;
@@ -50,12 +50,62 @@
         <br> <small id="SportsError"></small><br>
 
         <input onkeyup="validateMobile()" type="text" id="mobile" placeholder="Mobile number"><br>
-        <small id="mobileError"></small>
+        <small id="mobileError"></small><br>
 
-        <br><input onclick=" return validateForm()" type="submit" value="submit">
+        <select onchange="validateSubject()" id="subject">
+            <option value="0">select subject</option>
+            <option value="java">java</option>
+            <option value="js">js</option>
+            <option value="python">python</option>
+            <option value="c++">c++</option>
+        </select><br>
+        <small id="subjectError"></small><br>
+
+        <input onchange="validateFile()" type="file" name="" id="profile"><br>
+        <small id="profileError"></small><br>
+
+        <br><br><input onclick=" return validateForm()" type="submit" value="submit">
     </form>
 </body>
 <script>
+    function validateFile() {
+        let status = true;
+        let profile = document.querySelector("#profile");
+        let profileError = document.querySelector("#profileError");
+        if (profile.files[0]) {
+            let fileName = profile.files[0].name;
+            let lastDotIndex = fileName.lastIndexOf(".");
+            let fileExtension = fileName.substring(lastDotIndex);
+
+            if (fileExtension != ".png") {
+                status = false;
+                profileError.innerText = "only .png files are allowed"
+            }
+            else
+                profileError.innerText = "";
+        }
+        else {
+            status = false;
+            profileError.innerText = "upload profile picture"
+        }
+
+        return status;
+    }
+
+    function validateSubject() {
+        let status = true;
+        let subject = document.querySelector("#subject").value;
+        let subjectError = document.querySelector("#subjectError");
+
+        if (subject == "0") {
+            subjectError.innerText = 'select subject';
+            status = false;
+        }
+        else
+            subjectError.innerText = "";
+        return status;
+    }
+
     function validateMobile() {
         let status = true;
         let mobileNumber = document.querySelector("#mobile").value;
@@ -65,15 +115,15 @@
             status = false;
             mobileError.innerText = "mobile number is required";
         }
-        else if(isNaN(mobileNumber)){
+        else if (isNaN(mobileNumber)) {
             status = false;
             mobileError.innerText = "Only digits are allowed";
         }
-        else if(mobileNumber.startsWith("0")){
+        else if (mobileNumber.startsWith("0")) {
             status = false;
             mobileError.innerText = "Mobile number must not start with 0";
         }
-        else if(mobileNumber.length !=10){
+        else if (mobileNumber.length != 10) {
             status = false;
             mobileError.innerText = "invalid mobile number";
         }
@@ -204,7 +254,9 @@
         let genderStatus = validateGender();
         let sportsStatus = validateSports();
         let mobileStatus = validateMobile();
-        if (usernameStatus && passwordStatus && emailStatus && genderStatus && sportsStatus && mobileStatus)
+        let subjectStatus = validateSubject();
+        let profileStatus = validateFile();
+        if (usernameStatus && passwordStatus && emailStatus && genderStatus && sportsStatus && mobileStatus && subjectStatus && profileStatus)
             return true;
         return false;
     }
