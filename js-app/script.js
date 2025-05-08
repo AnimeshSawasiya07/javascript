@@ -152,12 +152,12 @@ function viewMoreComponent(data) {
   viewMoreDiv.appendChild(leftCol);
 
   let rightCol = document.createElement("div");
-  rightCol.setAttribute("class","col-md-6 d-flex flex-column justify-content-center align-items-cengter");
+  rightCol.setAttribute("class","col-md-6 d-flex flex-column p-5 align-items-cengter");
   rightCol.setAttribute("style","height:100%;box-shadow:5px 5px 10px 1px");
 
-  let title = document.createElement("div");
+  let title = document.createElement("h4");
   title.setAttribute("style","font-size:20px; font-weight:bolder")
-  title.innerHTML=`${data.title} <span class="text-primary">[${data.brand}]</span><hr>`;
+  title.innerHTML=`${data.title} <b class="text-primary">[${data.brand}]</b><hr>`;
   rightCol.appendChild(title);
 
   let description = document.createElement("p");
@@ -165,24 +165,29 @@ function viewMoreComponent(data) {
   rightCol.appendChild(description);
 
   let warrantyInfo = document.createElement("p");
-  warrantyInfo.innerHTML=`Warranty Information : ${data.warrantyInformation}`;
+  warrantyInfo.innerHTML=`<b>Warranty Information :</b> ${data.warrantyInformation}`;
   rightCol.appendChild(warrantyInfo);
 
   let shippingInfo = document.createElement("p");
-  shippingInfo.innerHTML=`Shipping Information : ${data.shippingInformation}`;
+  shippingInfo.innerHTML=`<b>Shipping Information :</b> ${data.shippingInformation}`;
   rightCol.appendChild(shippingInfo);
 
   let returnInfo = document.createElement("p");
-  returnInfo.innerHTML=`Return Policy : ${data.returnPolicy}`;
+  returnInfo.innerHTML=`<b>Return Policy :</b> ${data.returnPolicy}`;
   rightCol.appendChild(returnInfo);
 
   let ratingInfo = document.createElement("p");
-  ratingInfo.innerHTML=`Rating : ${data.rating}/5`;
+  ratingInfo.innerHTML=`<b>Rating : </b><span class='text-warning' style='font-size:20px; font-weight:bolder;'>${data.rating}/5</span>`;
   rightCol.appendChild(ratingInfo);
 
   let priceInfo = document.createElement("p");
-  priceInfo.innerHTML=`Offered price : <del>${data.price}</del>`;
+  priceInfo.innerHTML=`<b>Offered price :</b> <del class='text-danger'>${data.price}</del> <span class='text-success' style='font-weight:bolder; font-size:25px;'>${(data.price-(data.price*data.discountPercentage)/100).toFixed(2)} Rs.</span>`;
   rightCol.appendChild(priceInfo);
+
+  let buyNow = document.createElement("button");
+  buyNow.innerHTML="Buy now";
+  buyNow.setAttribute("class","btn btn-warning mt-4");
+  rightCol.appendChild(buyNow);
 
   viewMoreDiv.appendChild(rightCol);
 }
