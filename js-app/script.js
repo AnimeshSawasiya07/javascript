@@ -47,6 +47,9 @@ function headerComponent() {
   let signUp = document.createElement("div");
   signUp.innerHTML = "Sign up"
   signUp.setAttribute("class", "btn text-white");
+  signUp.addEventListener("click", function () {
+    signUpComponent();
+  });
   optionsDiv.appendChild(signUp);
 
 }
@@ -101,7 +104,7 @@ function cardComponent() {
     viewMore.setAttribute("style", "width:100%");
     viewMore.addEventListener("click", function () {
       viewMoreComponent(data);
-      console.log(data);
+      //console.log(data);
 
     })
     div.appendChild(viewMore);
@@ -124,23 +127,23 @@ function viewMoreComponent(data) {
   viewMoreDiv.appendChild(row);
 
   let leftCol = document.createElement("div");
-  leftCol.setAttribute("class","col-md-6");
-  leftCol.setAttribute("style","height:100%;box-shadow:5px 5px 10px 1px");
+  leftCol.setAttribute("class", "col-md-6");
+  leftCol.setAttribute("style", "height:100%;box-shadow:5px 5px 10px 1px");
 
   let mainImage = document.createElement("img");
-  mainImage.setAttribute("style","width:100%;height:480px");
-  mainImage.src=data.thumbnail;
+  mainImage.setAttribute("style", "width:100%;height:480px");
+  mainImage.src = data.thumbnail;
   leftCol.appendChild(mainImage);
 
   let imagesDiv = document.createElement("div");
-  imagesDiv.setAttribute("style","width:100%;height:120px;")
+  imagesDiv.setAttribute("style", "width:100%;height:120px;")
   leftCol.appendChild(imagesDiv);
 
-  for(let image of data.images){
+  for (let image of data.images) {
     let img = document.createElement("img");
-    img.setAttribute("style","width:30%;height:100px")
-    img.src=image;
-    img.addEventListener("click",function(){
+    img.setAttribute("style", "width:30%;height:100px")
+    img.src = image;
+    img.addEventListener("click", function () {
       let temp = mainImage.src;
       mainImage.src = image;
       image = temp;
@@ -152,44 +155,105 @@ function viewMoreComponent(data) {
   viewMoreDiv.appendChild(leftCol);
 
   let rightCol = document.createElement("div");
-  rightCol.setAttribute("class","col-md-6 d-flex flex-column p-5 align-items-cengter");
-  rightCol.setAttribute("style","height:100%;box-shadow:5px 5px 10px 1px");
+  rightCol.setAttribute("class", "col-md-6 d-flex flex-column p-5 align-items-cengter");
+  rightCol.setAttribute("style", "height:100%;box-shadow:5px 5px 10px 1px");
 
   let title = document.createElement("h4");
-  title.setAttribute("style","font-size:20px; font-weight:bolder")
-  title.innerHTML=`${data.title} <b class="text-primary">[${data.brand}]</b><hr>`;
+  title.setAttribute("style", "font-size:20px; font-weight:bolder")
+  title.innerHTML = `${data.title} <b class="text-primary">[${data.brand}]</b><hr>`;
   rightCol.appendChild(title);
 
   let description = document.createElement("p");
-  description.innerHTML=`${data.description}`
+  description.innerHTML = `${data.description}`
   rightCol.appendChild(description);
 
   let warrantyInfo = document.createElement("p");
-  warrantyInfo.innerHTML=`<b>Warranty Information :</b> ${data.warrantyInformation}`;
+  warrantyInfo.innerHTML = `<b>Warranty Information :</b> ${data.warrantyInformation}`;
   rightCol.appendChild(warrantyInfo);
 
   let shippingInfo = document.createElement("p");
-  shippingInfo.innerHTML=`<b>Shipping Information :</b> ${data.shippingInformation}`;
+  shippingInfo.innerHTML = `<b>Shipping Information :</b> ${data.shippingInformation}`;
   rightCol.appendChild(shippingInfo);
 
   let returnInfo = document.createElement("p");
-  returnInfo.innerHTML=`<b>Return Policy :</b> ${data.returnPolicy}`;
+  returnInfo.innerHTML = `<b>Return Policy :</b> ${data.returnPolicy}`;
   rightCol.appendChild(returnInfo);
 
   let ratingInfo = document.createElement("p");
-  ratingInfo.innerHTML=`<b>Rating : </b><span class='text-warning' style='font-size:20px; font-weight:bolder;'>${data.rating}/5</span>`;
+  ratingInfo.innerHTML = `<b>Rating : </b><span class='text-warning' style='font-size:20px; font-weight:bolder;'>${data.rating}/5</span>`;
   rightCol.appendChild(ratingInfo);
 
   let priceInfo = document.createElement("p");
-  priceInfo.innerHTML=`<b>Offered price :</b> <del class='text-danger'>${data.price}</del> <span class='text-success' style='font-weight:bolder; font-size:25px;'>${(data.price-(data.price*data.discountPercentage)/100).toFixed(2)} Rs.</span>`;
+  priceInfo.innerHTML = `<b>Offered price :</b> <del class='text-danger'>${data.price}</del> <span class='text-success' style='font-weight:bolder; font-size:25px;'>${(data.price - (data.price * data.discountPercentage) / 100).toFixed(2)} Rs.</span>`;
   rightCol.appendChild(priceInfo);
 
   let buyNow = document.createElement("button");
-  buyNow.innerHTML="Buy now";
-  buyNow.setAttribute("class","btn btn-warning mt-4");
+  buyNow.innerHTML = "Buy now";
+  buyNow.setAttribute("class", "btn btn-warning mt-4");
   rightCol.appendChild(buyNow);
 
   viewMoreDiv.appendChild(rightCol);
+}
+
+function signUpComponent() {
+  let main = document.getElementById("main");
+  main.innerHTML = "";
+  main.setAttribute("class", "d-flex justify-content-center align-items-center");
+  main.setAttribute("style", "width:100%;height:695px;");
+
+  let formDiv = document.createElement("div");
+  formDiv.setAttribute("style", "width:30%;min-height:100px;box-shadow:5px 5px 10px 1px;border-radius:5px");
+
+
+  let emailInput = document.createElement("input");
+  emailInput.setAttribute("type", "email");
+  emailInput.setAttribute("placeholder", "Enter email");
+  emailInput.setAttribute("class", "form-control mt-2");
+  formDiv.appendChild(emailInput);
+
+  let mobileInput = document.createElement("input");
+  mobileInput.setAttribute("type", "text");
+  mobileInput.setAttribute("placeholder", "Enter mobile");
+  mobileInput.setAttribute("class", "form-control mt-2");
+  formDiv.appendChild(mobileInput);
+
+  let passwordInput = document.createElement("input");
+  passwordInput.setAttribute("type", "password");
+  passwordInput.setAttribute("placeholder", "Enter password");
+  passwordInput.setAttribute("class", "form-control mt-2");
+  formDiv.appendChild(passwordInput);
+
+  let submit = document.createElement("button");
+  submit.innerHTML = "Submit"
+  submit.setAttribute("class", "btn btn-warning form-control mt-2");
+  submit.addEventListener("click", function () {
+    let username = emailInput.value;
+    let mobile = mobileInput.value;
+    let password = passwordInput.value;
+
+    let newUser = {username, mobile, password };
+
+    let userList = JSON.parse(localStorage.getItem("user-list"));
+    let isUserAlreadyPresent = userList.some((user) => {
+      return user.username == newUser.username;
+    })
+
+    if (!isUserAlreadyPresent) {
+      userList.push(newUser);
+      localStorage.setItem("user-list", JSON.stringify(userList));
+      alert("sign up success");
+    }
+    else{
+      alert("user already registered");
+    }
+  })
+  formDiv.appendChild(submit);
+
+  main.appendChild(formDiv);
+}
+
+function rakeTask() {
+  !localStorage.getItem("user-list") && localStorage.setItem("user-list", "[]");
 }
 
 function loadData() {
