@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="images">
+        <li>
+            <img src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz3v2xmucb.webp" height="150px" width="120px"
+                alt="">
+        </li>
+        <li>
+            <img src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz4ekzra9f.webp" height="150px" width="120px"
+                alt="">
+        </li>
+        <li>
+            <img src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz5qvejz8z.webp" height="150px" width="120px"
+                alt="">
+        </li>
+        <li>
+            <img src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzdn9cwhs5.webp" height="150px" width="120px"
+                alt="">
+        </li>
+    </ul>
+
+</body>
+<script>
+    //Bubbling phase in addEventListener
+
+    let images = document.querySelector("#images");
+    let li_items = document.querySelector("li");
+    images.addEventListener("click", () => {
+        console.log("ul clicked");
+
+    });
+
+    li_items.addEventListener("click", () => {
+        console.log("li clicked");
+    });
+</script>
+
+</html>
