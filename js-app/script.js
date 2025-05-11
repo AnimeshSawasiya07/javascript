@@ -203,25 +203,42 @@ function signUpComponent() {
 
   let formDiv = document.createElement("div");
   formDiv.setAttribute("style", "width:30%;min-height:100px;box-shadow:5px 5px 10px 1px;border-radius:5px");
+  formDiv.setAttribute("class", "d-flex flex-column");
 
 
   let emailInput = document.createElement("input");
   emailInput.setAttribute("type", "email");
   emailInput.setAttribute("placeholder", "Enter email");
   emailInput.setAttribute("class", "form-control mt-2");
+  emailInput.addEventListener("keyup", function () { return validateEmail(emailInput.value, emailError) });
+
   formDiv.appendChild(emailInput);
+
+  let emailError = document.createElement("small");
+  emailError.setAttribute("style", "height:21px;color:red");
+  formDiv.appendChild(emailError);
 
   let mobileInput = document.createElement("input");
   mobileInput.setAttribute("type", "text");
   mobileInput.setAttribute("placeholder", "Enter mobile");
   mobileInput.setAttribute("class", "form-control mt-2");
+  mobileInput.addEventListener("keyup", () => validateMobile(mobileInput.value, mobileError));
   formDiv.appendChild(mobileInput);
+
+  let mobileError = document.createElement("small");
+  mobileError.setAttribute("style", "height:21px;color:red");
+  formDiv.appendChild(mobileError);
 
   let passwordInput = document.createElement("input");
   passwordInput.setAttribute("type", "password");
   passwordInput.setAttribute("placeholder", "Enter password");
   passwordInput.setAttribute("class", "form-control mt-2");
+  passwordInput.addEventListener("keyup", () => validatePassword(passwordInput.value, passwordError));
   formDiv.appendChild(passwordInput);
+
+  let passwordError = document.createElement("small");
+  passwordError.setAttribute("style", "height:21px;color:red");
+  formDiv.appendChild(passwordError);
 
   let submit = document.createElement("button");
   submit.innerHTML = "Submit"
@@ -231,20 +248,22 @@ function signUpComponent() {
     let mobile = mobileInput.value;
     let password = passwordInput.value;
 
-    let newUser = {username, mobile, password };
+    let newUser = { username, mobile, password };
 
     let userList = JSON.parse(localStorage.getItem("user-list"));
     let isUserAlreadyPresent = userList.some((user) => {
       return user.username == newUser.username;
     })
 
-    if (!isUserAlreadyPresent) {
-      userList.push(newUser);
-      localStorage.setItem("user-list", JSON.stringify(userList));
-      alert("sign up success");
-    }
-    else{
-      alert("user already registered");
+    if (validateForm(newUser, emailError, mobileError, passwordError)) {
+      if (!isUserAlreadyPresent) {
+        userList.push(newUser);
+        localStorage.setItem("user-list", JSON.stringify(userList));
+        alert("sign up success");
+      }
+      else {
+        alert("user already registered");
+      }
     }
   })
   formDiv.appendChild(submit);
@@ -254,6 +273,93 @@ function signUpComponent() {
 
 function rakeTask() {
   !localStorage.getItem("user-list") && localStorage.setItem("user-list", "[]");
+}
+
+function validateEmail(username, emailError) {
+  let status = true;
+  let email = username;
+  function countAtTheRate() {
+    count = 0;
+    for (let i = 0; i < email.length; i++) {
+      if (email.charAt(i) == "@")
+        count++;
+    }
+    return count;
+  }
+
+
+  if (email.length == 0) {
+    status = false;
+    emailError.innerText = "email is required";
+  }
+  else if (countAtTheRate() > 1) {
+    status = false;
+    emailError.innerText = "only one @ allowed";
+  }
+  else if (!email.endsWith(".com")) {
+    status = false;
+    emailError.innerText = "email must ends with .com";
+  }
+  else if (!email.includes("@gmail")) {
+    status = false;
+    emailError.innerText = "email must includes gmail after @";
+  }
+  else
+    emailError.innerText = "";
+  return status;
+
+}
+
+function validateMobile(mobile, mobileError) {
+  let status = true;
+  let mobileNumber = mobile;
+
+  if (mobileNumber.length == 0) {
+    status = false;
+    mobileError.innerText = "mobile number is required";
+  }
+  else if (isNaN(mobileNumber)) {
+    status = false;
+    mobileError.innerText = "Only digits are allowed";
+  }
+  else if (mobileNumber.startsWith("0")) {
+    status = false;
+    mobileError.innerText = "Mobile number must not start with 0";
+  }
+  else if (mobileNumber.length != 10) {
+    status = false;
+    mobileError.innerText = "invalid mobile number";
+  }
+  else
+    mobileError.innerText = "";
+  return status;
+}
+
+function validatePassword(password, passwordError) {
+  let status = true
+
+  if (password.length == 0) {
+    status = false;
+    passwordError.innerText = "password is required";
+  }
+  else if (password.length < 6 || password.length > 10) {
+    status = false;
+    passwordError.innerText = "invalid password";
+  }
+  else
+    passwordError.innerText = "";
+
+  return status;
+}
+
+function validateForm(userObj, emailError, mobileError, passwordError) {
+  let passwordStatus = validatePassword(userObj.password, passwordError);
+  let emailStatus = validateEmail(userObj.username, emailError);
+  let mobileStatus = validateMobile(userObj.mobile, mobileError);
+
+  if (passwordStatus && emailStatus && mobileStatus)
+    return true;
+  return false;
 }
 
 function loadData() {
