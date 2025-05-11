@@ -32,8 +32,14 @@
     //Capturing phase in addEventListener
 
     let images = document.querySelector("#images");
-    images.addEventListener("click", () => {
-        console.log("ul clicked");
+    images.addEventListener("click", (e) => {
+
+        if (e.target.tagName === "IMG") {
+            alert("btn clicked");
+            console.log(e.target)
+            e.target.parentElement.remove();
+        }
+
 
     }, true);
 
