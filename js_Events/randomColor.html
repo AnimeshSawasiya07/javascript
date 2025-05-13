@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <button id="start">start</button>
+        <button id="stop">stop</button>
+    </center>
+</body>
+<script>
+    let start = document.getElementById("start");
+    let stop = document.getElementById("stop");
+
+
+    function getFullColorCode() {
+        let hex = "0123456789ABCDEF";
+        let colourCode = "#";
+        for (let i = 0; i < 6; i++) {
+            colourCode += hex[Math.floor(Math.random() * 10)];
+        }
+        return colourCode;
+    }
+
+    let change;
+    start.addEventListener("click", () => {
+        if (!change)
+            change = setInterval(changeBgColor, 1000)
+
+        function changeBgColor() {
+            document.body.style.backgroundColor = getFullColorCode();
+        }
+
+    });
+
+    stop.addEventListener("click", () => {
+        clearInterval(change);
+        change = null;
+    });
+
+</script>
+
+</html>
