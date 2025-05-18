@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #main {
+            background-color: #414141;
+            height: 695px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            height: 180px;
+            width: 720px;
+            background-color: gray;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.5s ease;
+
+        }
+
+        #slider-container {
+            height: 180px;
+            width: 630px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            border-radius: 10px;
+            align-items: center;
+
+        }
+
+        #slider-track {
+            display: flex;
+            gap: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .img {
+            height: 180px;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .arrow {
+            height: 180px;
+            width: 25px;
+            border-radius: 100px;
+            background-color: rgb(84, 83, 83);
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="container">
+            <button class="arrow" id="left-arrow">
+                &lt;
+            </button>
+            <div id="slider-container">
+                <div id="slider-track">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz3v2xmucb.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz4ekzra9f.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz5qvejz8z.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzdn9cwhs5.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzemfy9nse.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz3v2xmucb.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz4ekzra9f.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzz5qvejz8z.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzdn9cwhs5.webp" alt="">
+                    <img class="img" src="images/iphone-13-mlpf3hn-a-apple-original-imag6vzzemfy9nse.webp" alt="">
+                </div>
+            </div>
+            <button class="arrow" id="right-arrow">
+                &gt;
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+    let slider_track = document.getElementById("slider-track")
+
+    let left_arrow = document.getElementById("left-arrow");
+    let right_arrow = document.getElementById("right-arrow");
+
+    right_arrow.addEventListener("click", () => {
+        moveSlide(1)
+    })
+
+    left_arrow.addEventListener("click", () => {
+        moveSlide(-1)
+    })
+
+
+    let currentIndex = 0;
+    const visibleImages = 3;
+    const totalImages = 10;
+    const step = 3;
+    const imageWidth = 210;
+
+    function moveSlide(direction) {
+        currentIndex += direction * step;
+
+        // Index limit check
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex > totalImages - visibleImages)
+            currentIndex = totalImages - visibleImages;
+
+        // Actual slide
+        slider_track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    }
+</script>
+
+</html>
