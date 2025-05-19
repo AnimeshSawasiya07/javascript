@@ -41,7 +41,8 @@
             scrollbar-width: none;
             border-radius: 10px;
             align-items: center;
-
+             scroll-behavior: smooth;
+            transition: transform 0.9s ease;
         }
 
         #slider-track {
@@ -100,7 +101,7 @@
     </div>
 </body>
 <script>
-    let slider_track = document.getElementById("slider-track")
+    let slider_container = document.getElementById("slider-container")
 
     let left_arrow = document.getElementById("left-arrow");
     let right_arrow = document.getElementById("right-arrow");
@@ -129,7 +130,7 @@
             currentIndex = totalImages - visibleImages;
 
         // Actual slide
-        slider_track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+       slider_container.scrollLeft = currentIndex * imageWidth;
     }
 </script>
 
