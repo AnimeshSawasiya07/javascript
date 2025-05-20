@@ -53,45 +53,77 @@
             <input id="display" type="text" class="form-control" disabled>
             <div id="btn-container" class="container d-flex flex-column align-items-center justify-content-center">
                 <div class="row btn-row mt-4">
-                    <div class="col-3 btn-div"><button onclick="clearDisplay()" class="mybtn btn btn-danger">AC</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="clearDisplay()" class="mybtn btn btn-danger">AC</button>
                     </div>
-                    <div class="col-3 btn-div"><button onclick="press('%')" class="mybtn btn btn-danger">%</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('%')" class="mybtn btn btn-danger">%</button>
                     </div>
-                    <div class="col-3 btn-div"><button class="mybtn btn btn-danger">del</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('/')" class="mybtn btn btn-danger">/</button>
+                    <div class="col-3 btn-div">
+                        <button class="mybtn btn btn-danger">del</button>
                     </div>
-                </div>
-
-                <div class="row btn-row mt-4">
-                    <div class="col-3 btn-div"><button onclick="press('7')" class="mybtn btn btn-dark">7</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('8')" class="mybtn btn btn-dark">8</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('9')" class="mybtn btn btn-dark">9</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('*')" class="mybtn btn btn-danger">*</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('/')" class="mybtn btn btn-danger">/</button>
                     </div>
                 </div>
 
                 <div class="row btn-row mt-4">
-                    <div class="col-3 btn-div"><button onclick="press('4')" class="mybtn btn btn-dark">4</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('5')" class="mybtn btn btn-dark">5</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('6')" class="mybtn btn btn-dark">6</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('-')" class="mybtn btn btn-danger">-</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('7')" class="mybtn btn btn-dark">7</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('8')" class="mybtn btn btn-dark">8</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('9')" class="mybtn btn btn-dark">9</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('*')" class="mybtn btn btn-danger">*</button>
                     </div>
                 </div>
 
                 <div class="row btn-row mt-4">
-                    <div class="col-3 btn-div"><button onchange="press('1')" class="mybtn btn btn-dark">1</button></div>
-                    <div class="col-3 btn-div"><button onchange="press('2')" class="mybtn btn btn-dark">2</button></div>
-                    <div class="col-3 btn-div"><button onchange="press('3')" class="mybtn btn btn-dark">3</button></div>
-                    <div class="col-3 btn-div"><button onchange="press('+')" class="mybtn btn btn-danger">+</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('4')" class="mybtn btn btn-dark">4</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('5')" class="mybtn btn btn-dark">5</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('6')" class="mybtn btn btn-dark">6</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('-')" class="mybtn btn btn-danger">-</button>
+                    </div>
+                </div>
+
+                <div class="row btn-row mt-4">
+                    <div class="col-3 btn-div">
+                        <button onclick="press('1')" class="mybtn btn btn-dark">1</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('2')" class="mybtn btn btn-dark">2</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('3')" class="mybtn btn btn-dark">3</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('+')" class="mybtn btn btn-danger">+</button>
                     </div>
                 </div>
 
                 <div class="row btn-row mt-4 mb-3">
-                    <div class="col-3 btn-div"><button onclick="press('00')" class="mybtn btn btn-dark">00</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('00')" class="mybtn btn btn-dark">00</button>
                     </div>
-                    <div class="col-3 btn-div"><button onclick="press('0')" class="mybtn btn btn-dark">0</button></div>
-                    <div class="col-3 btn-div"><button onclick="press('.')" class="mybtn btn btn-dark">.</button></div>
-                    <div class="col-3 btn-div"><button onclick="calculate()" class="mybtn btn btn-danger">=</button>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('0')" class="mybtn btn btn-dark">0</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="press('.')" class="mybtn btn btn-dark">.</button>
+                    </div>
+                    <div class="col-3 btn-div">
+                        <button onclick="calculate()" class="mybtn btn btn-danger">=</button>
                     </div>
                 </div>
             </div>
@@ -118,6 +150,18 @@
 
 
         display.value += value;
+    }
+
+    function clearDisplay() {
+        display.value = "";
+    }
+
+    function calculate() {
+        try {
+            display.value = eval(display.value);
+        } catch (e) {
+            display.value = "Error";
+        }
     }
 
 </script>

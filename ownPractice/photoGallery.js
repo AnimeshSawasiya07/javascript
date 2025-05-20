@@ -71,8 +71,6 @@ function addImages(){
             deleteImg.setAttribute("class","btn text-white bg-danger mt-1")
             deleteImg.setAttribute("style","width:100%")
             deleteImg.addEventListener("click",(e)=>{
-                console.log(e.target);
-                console.log(images[i]);
 
                 images.splice(i, 1);
                 localStorage.setItem("images",JSON.stringify(images))
@@ -97,59 +95,3 @@ function addImages(){
 function rakeTask(){
     !localStorage.getItem("images") && localStorage.setItem("images","[]")
 }
-
-
-
-
-
-
-// function galleryComponent() {
-//     let main = document.getElementById("main")
-
-//     let addImgbtn = document.createElement("button")
-//     addImgbtn.innerHTML = "Add image"
-//     addImgbtn.setAttribute("class","btn text-white bg-danger ml-2")
-//     addImgbtn.addEventListener("click",()=>{
-//         alert("add image clicked")
-
-//         let fileInput = document.createElement("input")
-//         fileInput.type="file"
-//         fileInput.accept="image/*"
-//         fileInput.setAttribute("style","display:none")
-//         // addImgbtn.appendChild(fileInput)
-
-//         let img = document.createElement("img")
-
-//         fileInput.addEventListener("change",function(){
-//             const file = this.files[0]
-
-//             if(file){
-//                 const reader = new FileReader();
-//                 reader.onload = function(e){
-//                     img.src = e.target.result
-//                     //img.src = reader.result;
-//                 }
-//                 reader.readAsDataURL(file)
-//             }
-//         })
-
-//         main.appendChild(img)
-//         main.appendChild(fileInput)
-
-//         fileInput.click()
-
-//     })
-//     main.appendChild(addImgbtn)
-
-//     let deleteImgbtn = document.createElement("button")
-//     deleteImgbtn.innerHTML = "Delete image"
-//     deleteImgbtn.setAttribute("class","btn text-white bg-danger ml-1")
-//     main.appendChild(deleteImgbtn)
-
-//     let table = document.createElement("table");
-//     table.setAttribute("class", "container bg-secondary")
-//     table.setAttribute("style", "height:500px")
-//     main.appendChild(table)
-
-    
-// }
